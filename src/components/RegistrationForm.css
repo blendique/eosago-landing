@@ -196,6 +196,123 @@
     box-shadow: 0 15px 30px -5px rgba(255, 90, 0, 0.4);
 }
 
+/* Custom Dropdown Styles */
+.custom-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+.custom-dropdown-header {
+    background-color: var(--white);
+    border: 1px solid var(--uremont-border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.custom-dropdown-header.active {
+    border-color: var(--brand-blue);
+    box-shadow: 0 0 0 4px rgba(255, 90, 0, 0.1);
+}
+
+.custom-dropdown-placeholder {
+    color: #94A3B8;
+}
+
+.custom-dropdown-selected {
+    color: var(--text-main);
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 12px;
+}
+
+.custom-dropdown-arrow {
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.custom-dropdown-arrow.open {
+    transform: rotate(180deg);
+}
+
+.custom-dropdown-list-wrapper {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--uremont-border);
+    z-index: 10;
+    overflow: hidden;
+    animation: dropdownFadeIn 0.2s ease-out;
+}
+
+@keyframes dropdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.custom-dropdown-list {
+    max-height: 250px;
+    overflow-y: auto;
+    padding: 8px 0;
+}
+
+.custom-dropdown-item {
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-main);
+    transition: background-color 0.2s ease;
+}
+
+.custom-dropdown-item:hover {
+    background-color: var(--uremont-gray-bg);
+}
+
+.custom-checkbox {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 1px solid var(--uremont-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+    background-color: var(--white);
+    flex-shrink: 0;
+}
+
+.custom-dropdown-item:hover .custom-checkbox {
+    border-color: var(--brand-blue);
+}
+
+.custom-checkbox.checked {
+    background-color: var(--brand-blue);
+    border-color: var(--brand-blue);
+}
+
 @media (max-width: 768px) {
     .form-row {
         flex-direction: column;

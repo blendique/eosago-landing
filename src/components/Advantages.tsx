@@ -13,7 +13,7 @@ const Advantages = () => {
     return (
         <section className="advantages">
             <div className="advantages-container">
-                <h2 className="section-title">Почему выбирают работу с UREMONT</h2>
+                <h2 className="section-title">Почему страховые агенты выбирают UREMONT</h2>
                 <div className="adv-grid">
                     {advantages.map((item) => (
                         <div key={item.id} className="adv-card">

@@ -7,11 +7,3 @@
 main {
     flex: 1;
 }
-
-.footer {
-    text-align: center;
-    padding: 24px;
-    background-color: var(--uremont-dark);
-    color: var(--text-light);
-    font-size: 14px;
-}

@@ -6,6 +6,7 @@ import Features from './components/Features'
 import Advantages from './components/Advantages'
 import FAQ from './components/FAQ'
 import CTA from './components/CTA'
+import Footer from './components/Footer'
 import './App.css'
 
 function App() {
@@ -26,16 +27,7 @@ function App() {
         <FAQ />
         <CTA onCTAClick={scrollToTop} />
       </main>
-      <footer className="footer">
-        <div className="footer-content">
-          <div className="footer-logo">UREMONT <span className="footer-accent">Страхование</span></div>
-          <p>© 2026 UREMONT.com. Все права защищены.</p>
-          <div className="footer-links">
-            <a href="#">Публичная оферта</a>
-            <a href="#">Политика конфиденциальности</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

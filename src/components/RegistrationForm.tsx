@@ -1,6 +1,34 @@
-import './RegistrationForm.css'
+import { useState, useRef, useEffect } from 'react';
+import './RegistrationForm.css';
+
+const productOptions = ['ОСАГО', 'КАСКО', 'Ипотека', 'Другие виды'];
 
 const RegistrationForm = () => {
+    const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setIsDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
+    const toggleProduct = (product: string) => {
+        setSelectedProducts(prev =>
+            prev.includes(product)
+                ? prev.filter(p => p !== product)
+                : [...prev, product]
+        );
+    };
+
     return (
         <form className="registration-form" onSubmit={(e) => e.preventDefault()}>
             <div className="form-row">
@@ -25,12 +53,42 @@ const RegistrationForm = () => {
             </div>
 
             <div className="form-row full-width">
-                <select className="form-select large">
-                    <option value="" disabled selected>Основные продукты</option>
-                    <option>ОСАГО / КАСКО</option>
-                    <option>Ипотека</option>
-                    <option>Другие виды</option>
-                </select>
+                <div className="custom-dropdown" ref={dropdownRef}>
+                    <div
+                        className={`custom-dropdown-header ${isDropdownOpen ? 'active' : ''}`}
+                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    >
+                        <span className={selectedProducts.length === 0 ? "custom-dropdown-placeholder" : "custom-dropdown-selected"}>
+                            {selectedProducts.length === 0 ? "Основные продукты" : selectedProducts.join(', ')}
+                        </span>
+                        <svg className={`custom-dropdown-arrow ${isDropdownOpen ? 'open' : ''}`} width="12" height="8" viewBox="0 0 12 8" fill="none">
+                            <path d="M1 1.5L6 6.5L11 1.5" stroke="#64748B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </div>
+
+                    {isDropdownOpen && (
+                        <div className="custom-dropdown-list-wrapper">
+                            <div className="custom-dropdown-list">
+                                {productOptions.map(option => (
+                                    <div
+                                        key={option}
+                                        className={`custom-dropdown-item ${selectedProducts.includes(option) ? 'selected' : ''}`}
+                                        onClick={() => toggleProduct(option)}
+                                    >
+                                        <div className={`custom-checkbox ${selectedProducts.includes(option) ? 'checked' : ''}`}>
+                                            {selectedProducts.includes(option) && (
+                                                <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                                </svg>
+                                            )}
+                                        </div>
+                                        <span>{option}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </div>
             </div>
 
             <div className="form-footer">

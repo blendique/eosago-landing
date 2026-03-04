@@ -19,14 +19,13 @@
 .logo-area {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
 }
 
 .logo-icon {
     width: 24px;
     height: 24px;
     background-color: #00D36D;
-    /* Green from the screenshot */
     border-radius: 50%;
     position: relative;
 }
@@ -39,7 +38,6 @@
     width: 24px;
     height: 24px;
     background-color: #0A66C2;
-    /* Blue from the screenshot */
     border-radius: 50%;
     mix-blend-mode: multiply;
 }
@@ -48,13 +46,20 @@
     font-weight: 800;
     font-size: 20px;
     letter-spacing: -0.5px;
+    margin-left: 4px;
 }
 
 .header-nav {
     display: flex;
     gap: 24px;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 15px;
+}
+
+.header-nav a {
+    color: #1A1A1A;
+    text-decoration: none;
+    transition: color 0.2s;
 }
 
 .header-nav a:hover {
@@ -63,34 +68,25 @@
 
 .header-actions {
     display: flex;
-    gap: 12px;
+    gap: 24px;
+    align-items: center;
 }
 
-.btn-outline {
-    padding: 10px 20px;
-    border: 1px solid var(--uremont-border);
-    background: transparent;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 14px;
-    transition: all 0.2s;
+.header-action-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    transition: color 0.2s;
 }
 
-.btn-outline:hover {
-    background: var(--uremont-gray-bg);
+.header-action-link:hover {
+    color: var(--brand-blue);
 }
 
-.btn-primary {
-    padding: 10px 20px;
-    background-color: var(--brand-blue);
-    color: var(--white);
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 14px;
-    transition: all 0.2s;
-    border: none;
-}
-
-.btn-primary:hover {
-    background-color: var(--brand-blue-hover);
+.header-login-link {
+    color: var(--brand-blue);
 }
