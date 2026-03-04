@@ -5,7 +5,7 @@ const statsData = [
     { id: 1, value: '18', label: 'Страховых компаний', icon: ShieldCheck },
     { id: 2, value: '95%', label: 'Уровень одобрения', icon: TrendingUp },
     { id: 3, value: '3 дня', label: 'Выплата КВ по запросу', icon: Zap },
-    { id: 4, value: 'до 60%', label: 'Агентское КВ', icon: Users },
+    { id: 4, value: 'до 60%', label: 'КВ от стоимости полиса', icon: Users },
 ]
 
 const Stats = () => {
