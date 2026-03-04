@@ -235,6 +235,32 @@
     padding-right: 12px;
 }
 
+/* Status Dropdown Specifics */
+.status-dropdown {
+    flex: 1;
+}
+
+.status-dropdown .custom-dropdown-header {
+    padding: 6px 16px;
+    height: 100%;
+}
+
+.status-dropdown .header-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+.status-dropdown .select-label {
+    margin-bottom: 0px;
+}
+
+.status-dropdown .custom-dropdown-selected {
+    font-weight: 600;
+    padding-right: 0;
+}
+
 .custom-dropdown-arrow {
     transition: transform 0.3s ease;
     flex-shrink: 0;

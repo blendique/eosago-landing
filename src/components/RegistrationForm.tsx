@@ -2,16 +2,29 @@ import { useState, useRef, useEffect } from 'react';
 import './RegistrationForm.css';
 
 const productOptions = ['ОСАГО', 'КАСКО', 'Ипотека', 'Другие виды'];
+const statusOptions = [
+    'Самозанятый/Физическое лицо',
+    'Юридическое лицо (ООО)',
+    'Индивидуальный предприниматель'
+];
 
 const RegistrationForm = () => {
     const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const dropdownRef = useRef<HTMLDivElement>(null);
+    const [selectedStatus, setSelectedStatus] = useState<string>(statusOptions[0]);
+
+    const [isProductOpen, setIsProductOpen] = useState(false);
+    const [isStatusOpen, setIsStatusOpen] = useState(false);
+
+    const productRef = useRef<HTMLDivElement>(null);
+    const statusRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-                setIsDropdownOpen(false);
+            if (productRef.current && !productRef.current.contains(event.target as Node)) {
+                setIsProductOpen(false);
+            }
+            if (statusRef.current && !statusRef.current.contains(event.target as Node)) {
+                setIsStatusOpen(false);
             }
         };
 
@@ -29,6 +42,11 @@ const RegistrationForm = () => {
         );
     };
 
+    const selectStatus = (status: string) => {
+        setSelectedStatus(status);
+        setIsStatusOpen(false);
+    };
+
     return (
         <form className="registration-form" onSubmit={(e) => e.preventDefault()}>
             <div className="form-row">
@@ -38,13 +56,35 @@ const RegistrationForm = () => {
 
             <div className="form-row">
                 <input type="email" className="form-input" placeholder="E-mail" />
-                <div className="form-select-wrapper">
-                    <span className="select-label">Статус для выплаты комиссии</span>
-                    <select className="form-select">
-                        <option>Самозанятый/Физическое лицо</option>
-                        <option>ООО</option>
-                        <option>ИП</option>
-                    </select>
+                <div className="custom-dropdown status-dropdown" ref={statusRef}>
+                    <div
+                        className={`custom-dropdown-header ${isStatusOpen ? 'active' : ''}`}
+                        onClick={() => setIsStatusOpen(!isStatusOpen)}
+                    >
+                        <div className="header-info">
+                            <span className="select-label">Статус для выплаты комиссии</span>
+                            <span className="custom-dropdown-selected">{selectedStatus}</span>
+                        </div>
+                        <svg className={`custom-dropdown-arrow ${isStatusOpen ? 'open' : ''}`} width="12" height="8" viewBox="0 0 12 8" fill="none">
+                            <path d="M1 1.5L6 6.5L11 1.5" stroke="#64748B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </div>
+
+                    {isStatusOpen && (
+                        <div className="custom-dropdown-list-wrapper">
+                            <div className="custom-dropdown-list">
+                                {statusOptions.map(option => (
+                                    <div
+                                        key={option}
+                                        className={`custom-dropdown-item ${selectedStatus === option ? 'selected' : ''}`}
+                                        onClick={() => selectStatus(option)}
+                                    >
+                                        <span>{option}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -53,20 +93,20 @@ const RegistrationForm = () => {
             </div>
 
             <div className="form-row full-width">
-                <div className="custom-dropdown" ref={dropdownRef}>
+                <div className="custom-dropdown" ref={productRef}>
                     <div
-                        className={`custom-dropdown-header ${isDropdownOpen ? 'active' : ''}`}
-                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                        className={`custom-dropdown-header ${isProductOpen ? 'active' : ''}`}
+                        onClick={() => setIsProductOpen(!isProductOpen)}
                     >
                         <span className={selectedProducts.length === 0 ? "custom-dropdown-placeholder" : "custom-dropdown-selected"}>
                             {selectedProducts.length === 0 ? "Основные продукты" : selectedProducts.join(', ')}
                         </span>
-                        <svg className={`custom-dropdown-arrow ${isDropdownOpen ? 'open' : ''}`} width="12" height="8" viewBox="0 0 12 8" fill="none">
+                        <svg className={`custom-dropdown-arrow ${isProductOpen ? 'open' : ''}`} width="12" height="8" viewBox="0 0 12 8" fill="none">
                             <path d="M1 1.5L6 6.5L11 1.5" stroke="#64748B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </div>
 
-                    {isDropdownOpen && (
+                    {isProductOpen && (
                         <div className="custom-dropdown-list-wrapper">
                             <div className="custom-dropdown-list">
                                 {productOptions.map(option => (
