@@ -1,0 +1,203 @@
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-row {
+    display: flex;
+    gap: 8px;
+}
+
+.form-row.full-width {
+    flex-direction: column;
+}
+
+.form-input,
+.form-select {
+    flex: 1;
+    width: 100%;
+    padding: 12px 16px;
+    background-color: var(--white);
+    border: 1px solid var(--uremont-border);
+    border-radius: 12px;
+    font-size: 14px;
+    color: var(--text-main);
+    transition: all 0.2s ease;
+    font-family: inherit;
+    box-shadow: var(--shadow-sm);
+}
+
+.form-input::placeholder {
+    color: #94A3B8;
+}
+
+.form-input:focus,
+.form-select:focus {
+    outline: none;
+    border-color: var(--brand-blue);
+    box-shadow: 0 0 0 4px rgba(255, 90, 0, 0.1);
+}
+
+.form-select-wrapper {
+    flex: 1;
+    position: relative;
+    background-color: var(--white);
+    border: 1px solid var(--uremont-border);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    padding: 6px 16px;
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-select-wrapper:focus-within {
+    border-color: var(--brand-blue);
+    box-shadow: 0 0 0 4px rgba(255, 90, 0, 0.1);
+}
+
+.select-label {
+    font-size: 11px;
+    color: #94A3B8;
+    margin-bottom: 2px;
+    font-weight: 500;
+}
+
+.form-select-wrapper .form-select {
+    padding: 0;
+    background: transparent;
+    border: none;
+    font-weight: 600;
+    appearance: none;
+    box-shadow: none;
+    font-size: 14px;
+}
+
+.form-select.large {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2364748B%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px top 50%;
+    background-size: 12px auto;
+}
+
+.info-box {
+    background-color: var(--brand-blue-light);
+    color: var(--brand-blue-hover);
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 500;
+    border: 1px solid var(--brand-blue-light);
+}
+
+.form-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    font-size: 12px;
+    color: var(--text-light);
+    cursor: pointer;
+    position: relative;
+    padding-left: 28px;
+    line-height: 1.4;
+}
+
+.checkbox-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: var(--uremont-gray-bg);
+    border: 1px solid var(--uremont-border);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.checkbox-label:hover input~.checkmark {
+    border-color: var(--brand-blue);
+}
+
+.checkbox-label input:checked~.checkmark {
+    background-color: var(--brand-blue);
+    border-color: var(--brand-blue);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-label input:checked~.checkmark:after {
+    display: block;
+}
+
+.checkbox-label .checkmark:after {
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-label a {
+    color: var(--brand-blue);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 0.2s;
+    margin-left: 4px;
+}
+
+.checkbox-label a:hover {
+    text-decoration-color: var(--brand-blue);
+}
+
+.submit-btn {
+    background: var(--gradient-brand);
+    color: var(--white);
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-brand);
+    border: none;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px -5px rgba(255, 90, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+    }
+}

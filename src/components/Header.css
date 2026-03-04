@@ -1,0 +1,96 @@
+.header {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--uremont-border);
+    padding: 16px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 24px;
+    height: 24px;
+    background-color: #00D36D;
+    /* Green from the screenshot */
+    border-radius: 50%;
+    position: relative;
+}
+
+.logo-icon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -8px;
+    width: 24px;
+    height: 24px;
+    background-color: #0A66C2;
+    /* Blue from the screenshot */
+    border-radius: 50%;
+    mix-blend-mode: multiply;
+}
+
+.logo-text {
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+}
+
+.header-nav {
+    display: flex;
+    gap: 24px;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.header-nav a:hover {
+    color: var(--brand-blue);
+}
+
+.header-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-outline {
+    padding: 10px 20px;
+    border: 1px solid var(--uremont-border);
+    background: transparent;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.btn-outline:hover {
+    background: var(--uremont-gray-bg);
+}
+
+.btn-primary {
+    padding: 10px 20px;
+    background-color: var(--brand-blue);
+    color: var(--white);
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--brand-blue-hover);
+}
